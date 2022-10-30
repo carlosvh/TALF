@@ -84,6 +84,26 @@ aba -$>$ ans = 0
 \\
 
 We will now test the automata that we designed in exercise 1.
+First of all, we have to modifiy the finiteautomata.json file to include the description of our automata.
+
+\begin{verbatim}
+{
+    "name" : "Exercise_1",
+    "representation" : {
+      "K" : ["q0", "q1", "q2"],
+      "A" : ["a", "b"],
+      "s" : "q0",
+      "F" : ["q1"],
+      "t" : [["q0", "a", "q1"],
+             ["q0", "b", "q2"],
+             ["q1", "a", "q2"],
+             ["q1", "b", "q2"],
+             ["q2", "a", "q2"],
+             ["q2", "b", "q2"]]
+      }
+\end{verbatim}
+\newpage
+Now, we can use Octave to run this command:\\
 
 $>>$finiteautomaton("Exercise1","a", "LaTeX")
 
