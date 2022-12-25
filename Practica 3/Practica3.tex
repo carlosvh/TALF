@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+	\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 3: Máquina de Turing, Funciones Recursivas y Lenguaje WHILE}
+    \author{Velasco Hurtado, Carlos}
+    \date{\today}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+	\usepackage{whilecode2}
+	\usepackage{graphicx}
+	\usepackage{amsmath}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Exercise 1}
+Define the TM solution of exercise 3.4 of the problem list and test its correct behaviour.
+\\
+
+\includegraphics[height=8cm]{MT-suma.jpg}
+
+After testing its behaviour with JFLAP, we can confirm that it works correctly. However, there's one thing to notice. In the transition from q1 to q2 the instruction reads a * symbol when it should read the blank symbol. It proved imposible to me to test the behaviour of the TM using a blank symbol as a separator, as I couldn't write it in any way, so I replaced it with a * symbol.
+\\\\
+Another thing to note is that this TM starts and finishes to the left of the first input string.
+
+\newpage
+Matrix definition of this TM:
+\[
+\begin{bmatrix}
+    q0 & * & r & q0 \\
+    q0 & | & r & q1 \\
+    q1 & * & | & q2 \\
+    q1 & | & r & q1 \\
+    q2 & * & l & q3 \\
+    q2 & | & r & q2 \\
+    q3 & * & l & q4 \\
+    q3 & | & * & q3 \\
+    q4 & * & h & q4 \\
+    q4 & | & l & q4 \\
+\end{bmatrix}
+\]\\
+
+\newpage
+
+\section{Exercise 2}
+
+Define a recursive function for the sum of three values.
+\\
+
+$<<\pi _1^1|\sigma(\pi_3^3)>|\sigma(\pi_4^4)>$
+%<<\pi^1_1|σ(π^3_3)>|σ(\^4_4)>
+
+
+\section{Exercise 3}
+Implement a WHILE program that computes the sum of three values.
+
+\begin{whilecode}[H]
+
+ \While{$X1 \not = 0$}{
+
+  $X1 \Assig X1 - 1$\;
+  $X4 \Assig X4 + 1$
+ }
+ \While{$X2 \not = 0$}{
+  $X2 \Assig X2 - 1$\;
+  $X4 \Assig X4 + 1$
+ }
+ \While{$X3 \not = 0$}{
+  $X3 \Assig X3 - 1$\;
+  $X4 \Assig X4 + 1$
+ }
+ X1 \Assig X4;
+
+\end{whilecode}
+
+\end{document}
+
